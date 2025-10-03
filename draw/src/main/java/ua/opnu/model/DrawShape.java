@@ -6,7 +6,7 @@ import java.awt.*;
  * Клас "Фігура для малювання".
  * Клас містить початкову та кінцеву точку, а також різні методи
  */
-public abstract class DrawShape {
+public class DrawShape {
 
     public static DrawShape newInstance(int shapeType) {
         DrawShape shape = null;
@@ -18,7 +18,7 @@ public abstract class DrawShape {
         return shape;
     }
 
-    // Константы для типів фигур
+    // Константы для типів фігур
     public static final int SHAPE_RECTANGLE = 0;
     public static final int SHAPE_ROUNDED_RECT = 1;
 
@@ -26,7 +26,7 @@ public abstract class DrawShape {
     private Point startPoint;
     private Point endPoint;
 
-    // Конструктор без пареметрів.
+    // Конструктор без параметрів
     public DrawShape() {
         this(new Point(0, 0), new Point(0, 0));
     }

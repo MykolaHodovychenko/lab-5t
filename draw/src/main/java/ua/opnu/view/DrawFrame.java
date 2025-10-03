@@ -61,7 +61,7 @@ public class DrawFrame extends JFrame {
         JPanel buttonPanel = new JPanel(true);
 
         // Повідомляємо панелі, що елементи всередині нього
-        // повинні йти один за одним зліва направо з вирівнюванням зліва
+        // повинні йти один за одним зліва направо з вирівнюванням по центру
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         // Колір фону панелі
         buttonPanel.setBackground(Color.CYAN);
