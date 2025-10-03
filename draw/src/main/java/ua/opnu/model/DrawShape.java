@@ -18,7 +18,7 @@ public class DrawShape {
         return shape;
     }
 
-    // Константы для типів фігур
+    // Константи для типів фігур
     public static final int SHAPE_RECTANGLE = 0;
     public static final int SHAPE_ROUNDED_RECT = 1;
 

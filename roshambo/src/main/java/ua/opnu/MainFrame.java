@@ -50,6 +50,11 @@ public class MainFrame extends JFrame implements ActionListener {
 
     private int checkWinner(GameShape player, GameShape computer) {
 
+        // Метод отримує клас фігури гравця і комп'ютера за допомогою оператора instanceof
+        // Метод повертає 1 якщо переміг гравець
+        // Метод повертає 0 якщо нічия (обидві фігури однакові)
+        // Метод повертає -1 якщо переміг комп'ютер
+
         // TODO: написати логіку методу
 
         return 0;
