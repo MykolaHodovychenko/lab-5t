@@ -21,16 +21,28 @@ public class MainFrame extends JFrame implements ActionListener {
         JButton rockButton = new JButton("Камінь");
         rockButton.addActionListener(this);
         rockButton.setActionCommand("rock");
+
         JButton paperButton = new JButton("Папір");
         paperButton.addActionListener(this);
         paperButton.setActionCommand("paper");
+
         JButton scissorsButton = new JButton("Ножиці");
         scissorsButton.addActionListener(this);
         scissorsButton.setActionCommand("scissors");
 
+        JButton lizardButton = new JButton("Ящірка");
+        lizardButton.addActionListener(this);
+        lizardButton.setActionCommand("lizard");
+
+        JButton spockButton = new JButton("Спок");
+        spockButton.addActionListener(this);
+        spockButton.setActionCommand("spock");
+
         this.add(rockButton);
         this.add(paperButton);
         this.add(scissorsButton);
+        this.add(lizardButton);
+        this.add(spockButton);
 
         this.pack();
         this.setVisible(true);
@@ -38,14 +50,24 @@ public class MainFrame extends JFrame implements ActionListener {
 
     private GameShape generateShape() {
 
-        // TODO: написати логіку методу
+        // написати логіку методу
 
         // Метод повертає об'єкт ігрової фігури (камінь, ножиці чи папір)
         // випадковим чином
 
-        int random = new Random().nextInt(3);
+        int random = new Random().nextInt(5);
 
-        return new GameShape(); // TODO: змініть на об'єкт потрібної фігури
+        return switch (random) {
+            case 0 -> new Rock();
+            case 1 -> new Paper();
+            case 2 -> new Scissors();
+            case 3 -> new Lizard();
+            case 4 -> new Spock();
+            default -> new GameShape();
+        };
+
+
+        //return new GameShape(); // змініть на об'єкт потрібної фігури
     }
 
     private int checkWinner(GameShape player, GameShape computer) {
@@ -55,7 +77,30 @@ public class MainFrame extends JFrame implements ActionListener {
         // Метод повертає 0 якщо нічия (обидві фігури однакові)
         // Метод повертає -1 якщо переміг комп'ютер
 
-        // TODO: написати логіку методу
+        // написати логіку методу
+
+        if(player.getClass().equals(computer.getClass())) return 0;
+
+        if(player instanceof Rock){
+            if(computer instanceof Scissors || computer instanceof Lizard) return 1;
+            if(computer instanceof Paper || computer instanceof Spock) return -1;
+        }
+        if(player instanceof Paper){
+            if(computer instanceof Rock || computer instanceof Spock) return 1;
+            if(computer instanceof Scissors || computer instanceof Lizard) return -1;
+        }
+        if(player instanceof Scissors){
+            if(computer instanceof Paper || computer instanceof Lizard) return 1;
+            if(computer instanceof Rock || computer instanceof Spock) return -1;
+        }
+        if(player instanceof Lizard){
+            if(computer instanceof Paper || computer instanceof Spock) return 1;
+            if(computer instanceof Rock || computer instanceof Scissors) return -1;
+        }
+        if(player instanceof Spock){
+            if(computer instanceof Rock || computer instanceof Scissors) return 1;
+            if(computer instanceof Paper || computer instanceof Lizard) return -1;
+        }
 
         return 0;
     }
@@ -70,12 +115,21 @@ public class MainFrame extends JFrame implements ActionListener {
         switch (e.getActionCommand()) {
             case "rock":
                 // присвоїти playerShape об'єкт відповідного класу
+                playerShape = new Rock();
                 break;
             case "paper":
                 // присвоїти playerShape об'єкт відповідного класу
+                playerShape = new Paper();
                 break;
             case "scissors":
                 // присвоїти playerShape об'єкт відповідного класу
+                playerShape = new Scissors();
+                break;
+            case "lizard":
+                playerShape = new Lizard();
+                break;
+            case "spock":
+                playerShape = new Spock();
                 break;
         }
 
